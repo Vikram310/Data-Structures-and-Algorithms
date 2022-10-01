@@ -5,10 +5,15 @@ class Solution:
         stack = []
         ClosetoOpen = { ")":"(", "]":"[", "}":"{" }
         
+        #iterating through every character in string
         for c in s:
+            
+            # checking if the character is a closing parenthesis
             if c in ClosetoOpen:
+                
+                #checking if stack is not empty and also the latest one in stack is equal to the corresponding opening for closing
                 if stack and stack[-1] == ClosetoOpen[c]:
-                    stack.pop()
+                    stack.pop() #pop the opening from stack, if it matches with the closing 
                 else:
                     return False
             else:
