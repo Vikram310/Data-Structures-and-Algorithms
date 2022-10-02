@@ -1,6 +1,5 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        
         @cache
         def dfs(n):
             if n ==1 :
