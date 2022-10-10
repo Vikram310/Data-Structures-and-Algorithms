@@ -7,16 +7,12 @@
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         
-        if not p and not q: #both nodes are NULL, then same structure so True 
-            return True
-        
-        if not p or not q: #one of the nodes is NULL, then they are not same, so False
-            return False
-        
-        if p.val != q.val: #both nodes are not null, but values are different, so FALSE
-            return False
-        
-        #return True only if both sub-trees are same and identical
-        
-        return (self.isSameTree(p.left,q.left) and  #checking for left sub-tree
-                self.isSameTree(p.right,q.right)) #checking for right sub-tree
+        def dfs(p,q):
+            if not p and not q:
+                return True
+            elif (p and not q) or (not p and q) or p.val != q.val:
+                return False
+            
+            return dfs(p.left,q.left) and dfs(p.right,q.right)
+
+        return dfs(p,q)
