@@ -1,4 +1,4 @@
-## Definition for singly-linked list.
+# Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
@@ -7,13 +7,14 @@ class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
         if not head.next:
-            return None
-
-        rabbit, tortoise = head.next.next, head
-
-        while rabbit and rabbit.next:
-            tortoise = tortoise.next
-            rabbit = rabbit.next.next
-
-        tortoise.next = tortoise.next.next
-        return head
+            return None 
+        
+        slow,fast,prev = head,head,None
+        
+        while fast and fast.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next 
+            
+        prev.next = slow.next
+        return head 
