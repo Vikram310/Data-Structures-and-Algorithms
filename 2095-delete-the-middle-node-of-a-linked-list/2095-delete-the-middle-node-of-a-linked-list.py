@@ -1,4 +1,4 @@
-# Definition for singly-linked list.
+## Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
@@ -9,11 +9,11 @@ class Solution:
         if not head.next:
             return None
 
-        fast, slow = head.next.next, head
+        rabbit, tortoise = head.next.next, head
 
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+        while rabbit and rabbit.next:
+            tortoise = tortoise.next
+            rabbit = rabbit.next.next
 
-        slow.next = slow.next.next
+        tortoise.next = tortoise.next.next
         return head
