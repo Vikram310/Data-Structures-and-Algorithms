@@ -10,17 +10,13 @@ class Solution:
         if not root:
             return 0
         
-        q = deque()
-        q.append((root,1))
+        if not root.left and not root.right:
+            return 1
         
-        while q:
-            node,depth = q.popleft()
-            
-            if not node.left and not node.right:
-                return depth
-            
-            if node.left:
-                q.append((node.left, 1+depth))
-            
-            if node.right:
-                q.append((node.right, 1+depth))
+        if not root.left and root.right:
+            return 1 + self.minDepth(root.right)
+    
+        if not root.right and root.left:
+            return 1 + self.minDepth(root.left)
+        
+        return 1 + min(self.minDepth(root.left),self.minDepth(root.right))
