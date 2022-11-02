@@ -7,6 +7,8 @@ class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
         """
         Do not return anything, modify head in-place instead.
+        Time Complexity: O(n)
+        Space Complexity: O(1)
         """
         # finding the middle node of list
         slow , fast = head, head.next
