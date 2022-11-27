@@ -6,13 +6,13 @@
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
         
-        slow, fast = head, head
-        # Finding middle node
+        #Two - pointer
+        slow,fast = head, head
         while fast and fast.next:
             slow = slow.next
-            fast = fast.next.next
+            fast = fast.next.next 
         
-        #reverse second half of list
+        # slow is at middle node, so reverse the nodes from slow till end
         prev = None
         while slow:
             tmp = slow.next
@@ -20,11 +20,11 @@ class Solution:
             prev = slow
             slow = tmp
         
-        #check for palindrome
+        #now we have two linked lists, with prev pointing to first node after middle
         left, right = head, prev
-        while right:
+        while right: 
             if left.val != right.val:
                 return False
             left = left.next
             right = right.next
-        return True 
+        return True
